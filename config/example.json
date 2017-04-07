@@ -1,0 +1,6 @@
+{
+    "username": "username",
+    "password": "password",
+    "api": "http://localhost:8080/api",
+    "images": "http://localhost:8080/images"
+}
