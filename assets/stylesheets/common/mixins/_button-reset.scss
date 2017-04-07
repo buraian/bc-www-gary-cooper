@@ -1,0 +1,19 @@
+// Reset Button Styles
+
+// https://codepen.io/terkel/pen/dvejH
+@mixin button-reset {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    color: inherit;
+    /* cursor: default; */
+    font: inherit;
+    line-height: normal;
+    outline: 0;
+    overflow: visible;
+    padding: 0;
+    -webkit-appearance: button; /* for input */
+    -webkit-user-select: none; /* for button */
+       -moz-user-select: none;
+        -ms-user-select: none;
+}

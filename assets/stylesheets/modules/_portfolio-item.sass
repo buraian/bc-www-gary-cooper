@@ -1,0 +1,107 @@
+// Single Portfolio Item
+
+.portfolio-item
+
+  &--article
+
+    &--wrapper
+      width: 100%
+
+  &--header
+
+    &--wrapper
+      margin-bottom: 3rem
+
+  &--logomark
+    color: $grey-dark
+    font-family: $family-title
+    font-size: 48px
+    line-height: 1
+    margin-bottom: .75rem
+    text-align: center
+
+  &--kicker
+    font-family: $family-subtitle
+    margin-bottom: 1em
+    text-align: center
+    text-transform: uppercase
+
+    &--wrapper
+      margin-bottom: 3.5rem
+
+  &--title
+
+    &--wrapper
+      text-align: center
+
+  &--description
+
+    &--wrapper
+
+  &--project-links
+    background-color: $white
+    border: 6px double $grey-light
+    padding-bottom: 1rem
+    padding-top: 1rem
+    text-align: center
+
+    &--wrapper
+      margin-bottom: .5em
+
+  &--metadata
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-between
+
+    +from($tablet)
+      flex-wrap: nowrap
+
+    &--wrapper
+      margin-bottom: 1.5rem
+
+    dl
+      width: 50%
+
+      +from($tablet)
+        width: auto
+
+    dd
+      font-size: .8em
+
+  &--thumbnails
+
+  &--thumbnail
+
+    a
+      background-color: rgba($white, .3)
+      border: 1px solid $grey-dark
+      display: block
+      padding: .5rem
+      position: relative
+      transition: .6s
+
+      &:after
+        border: 1px solid #ffffff
+        bottom: 0
+        content: ""
+        display: block
+        left: 0
+        position: absolute
+        right: 0
+        top: 0
+
+      img
+        filter: grayscale(1)
+        mix-blend-mode: multiply
+
+      &:focus,
+      &:hover
+        background-color: $white
+
+        img
+          mix-blend-mode: unset
+          filter: none
+
+    &--caption
+      font-size: .8em
+      margin: .5em 0 1em

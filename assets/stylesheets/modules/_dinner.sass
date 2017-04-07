@@ -1,0 +1,158 @@
+// Dinner Menu
+
+.dinner
+
+  &--wrapper
+    bottom: 0
+    color: map-get($monokai-soda, Colour0)
+    display: block
+    font-family: $family-monospace
+    left: 0
+    overflow-y: auto
+    position: fixed
+    right: 0
+    top: 0
+
+    a
+      // border-bottom: 1px solid rgba(map-get($monokai-soda, Colour0), .1)
+      color: map-get($monokai-soda, Colour11)
+      font-weight: normal
+
+      &:hover
+        color: lighten(map-get($monokai-soda, Colour11), 10%)
+        color: map-get($monokai-soda, Colour8)
+
+  &--logomark
+    // font-family: $family-title
+    // font-size: 42px
+    left: 0
+    line-height: 1
+    padding: 1.5rem 0
+    position: absolute
+    right: 0
+    text-align: center
+    top: 0
+    z-index: 10
+
+  &--menu
+
+    &--main
+      padding: 5rem .75rem
+      text-align: center
+
+      ul
+        display: inline-block
+        list-style-type: none
+        margin: 0
+        padding: 0
+
+        li
+          display: inline-block
+          margin: 0
+          padding: 0 .75em .75rem
+          position: relative
+          text-align: center
+          text-transform: uppercase
+
+          &:before
+            content: '['
+            left: 0
+            position: absolute
+            top: 0
+
+          &:after
+            content: ']'
+            position: absolute
+            right: 0
+            top: 0
+
+          a
+
+  &--love
+    display: block
+    width: 100%
+
+    &--wrapper
+      bottom: 0
+      left: 0
+      position: fixed
+      right: 0
+
+    &--title
+      color: #595959
+      font-size: .8em
+      font-weight: bold
+      margin-bottom: .75em
+      text-align: center
+      text-transform: uppercase
+
+    ul
+      display: flex
+      flex-wrap: wrap
+      justify-content: center
+      list-style-type: none
+      margin: 0
+      padding: 0 1rem 1rem
+
+      +from($tablet)
+        flex-wrap: nowrap
+
+    &--item
+      background-position: center center
+      background-repeat: no-repeat
+      background-size: 65%
+      position: relative
+      height: 35px
+      width: 35px
+
+      +from($tablet)
+        height: 45px
+        width: 45px
+
+      &:before
+        bottom: 1px
+        content: ''
+        display: block
+        left: 1px
+        position: absolute
+        right: 1px
+        top: 1px
+        z-index: -1
+
+      a
+        display: block
+
+    // Fine Tuning
+    &--adobecc
+      background-size: 75%
+
+    &--apple
+      background-size: 60%
+
+    &--css3
+    &--expressjs
+      background-size: 80%
+      width: 70px
+
+      +from($tablet)
+        width: 90px
+
+    &--git
+    &--grunt
+      background-size: 55%
+
+    &--html5
+    &--javascript
+    &--jquery
+    &--mdn
+    &--nodejs
+      width: 70px
+
+      +from($tablet)
+        width: 90px
+
+    &--npm
+    &--sass
+      background-size: 75%
+
+    &--sublime

@@ -1,0 +1,29 @@
+// Buttons
+
+.button
+  background-color: #b4b8b9
+  // border: 6px double #b4b8b9
+  border: 1px solid $grey-dark
+  padding-bottom: .6rem
+  padding-top: .4rem
+  position: relative
+  transition: .6s
+
+  &:after
+    border: 1px solid #ffffff
+    bottom: 0
+    content: ""
+    display: block
+    left: 0
+    position: absolute
+    right: 0
+    top: 0
+
+  &:focus,
+  &.is-focused
+    box-shadow: none
+
+  &:hover,
+  &.is-hovered
+    background-color: $white
+    border-color: $grey-dark

@@ -1,0 +1,126 @@
+// Portfolio Listing
+
+.portfolio-listing
+
+  &--wrapper
+
+  &--title
+
+    &,
+    .content &
+      margin-bottom: 0
+      text-align: center
+      text-transform: uppercase
+
+  &--categories
+
+    +from($tablet)
+      text-align: center
+
+    &--wrapper
+      margin-bottom: 1rem
+
+    ul
+      display: block
+      list-style-type: none
+      margin: 0
+      padding: 0
+
+  &--category
+    display: block
+    margin: 0
+    padding: 1.5rem 1.75rem 0
+    position: relative
+
+    +from($tablet)
+      display: inline-block
+
+    &:before
+      background-color: $grey-dark
+      border-radius: 100px
+      content: ''
+      display: block
+      height: .75rem
+      left: 50%
+      margin-left: -.375rem
+      mix-blend-mode: screen
+      position: absolute
+      top: .25rem
+      width: .75rem
+
+    button
+      +button-reset
+
+    &--design
+
+      &:before
+        background-color: map-get($monokai-soda, Colour15)
+
+    &--development
+
+      &:before
+        background-color: map-get($monokai-soda, Colour17)
+
+    // &--web
+
+    //   &:before
+    //     background-color: map-get($monokai-soda, Colour10)
+
+    &--print
+
+      &:before
+        background-color: map-get($monokai-soda, Colour12)
+
+  &--signifier
+    background-color: $grey-dark
+    border-radius: 100px
+    display: inline-block
+    height: .625rem
+    margin-right: .1rem
+    mix-blend-mode: screen
+    width: .625rem
+
+    &--design
+      background-color: map-get($monokai-soda, Colour15)
+
+    &--development
+      background-color: map-get($monokai-soda, Colour17)
+
+    // &--web
+    //   background-color: map-get($monokai-soda, Colour10)
+
+    &--print
+      background-color: map-get($monokai-soda, Colour12)
+
+  &--toc
+
+    &--wrapper
+
+    &--column
+
+      +mobile
+        padding: 0
+
+    &--item
+      border-bottom: 1px solid $grey-dark
+      font-family: $family-handwritten
+      padding: .5em 0 0 1.8em
+      position: relative
+      white-space: nowrap
+
+      +mobile
+        padding-left: 1.5em
+
+      span
+        bottom: 0
+        color: $grey-dark
+        display: inline-block
+        font-family: $family-label
+        font-size: .8em
+        font-weight: bold
+        left: 0
+        position: absolute
+        text-align: right
+        white-space: nowrap
+
+    &--action

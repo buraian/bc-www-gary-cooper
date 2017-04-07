@@ -1,0 +1,26 @@
+// Images
+
+img,
+picture
+  max-width: 100%
+  width: auto\9
+  height: auto
+  vertical-align: middle
+  border: 0
+  -ms-interpolation-mode: bicubic
+
+/*
+ * Fix IE disproportionate SVG scaling issue for site logo image
+ * @link  http://codepen.io/larrybotha/pen/hmlAs
+ *
+ * [1] IE9
+ * [2] IE10+
+ */
+// 1
+img[src*=".svg"]
+  width: 100%\9
+
+// 2
+@media screen and (min-width:0\0)
+  img[src*=".svg"]
+    width: 100%
