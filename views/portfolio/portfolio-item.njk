@@ -1,0 +1,191 @@
+{% extends "layouts/layout.njk" %}
+
+{% block title %}{{super()}} | Portfolio | {{item.title}}{% endblock %}
+
+{% block body %}
+<article class="portfolio-item--article--wrapper">
+    <div class="portfolio-item--article {% for tag in item.tags %} {{tag}}{% endfor %} container content">
+
+        {# Header #}
+        <header class="portfolio-item--header">
+
+            {# Kicker #}
+            <div class="portfolio-item--kicker--wrapper">
+                <div class="portfolio-item--logomark">BC</div>
+                <div class="portfolio-item--kicker">
+                    <a href="/portfolio">Portfolio</a>
+                </div>
+            </div>
+
+            {# Title #}
+            <div class="portfolio-item--title--wrapper">
+                <h1 class="portfolio-item--title page--title">{{item.title}}</h1>
+            </div>
+        </header>
+
+        {# Main #}
+        <main class="portfolio-item--main columns is-multiline">
+
+            {# Description #}
+            {% if item.description %}
+                <div class=" portfolio-item--description--wrapper column">
+                    <div class="portfolio-field--wrapper">
+                        <div class="portfolio-field--label">Description</div>
+                        <div class="portfolio-field--content portfolio-item--description">
+                            <p>{{item.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            {# Project Links #}
+            {% if item.gitPageURL.length > 0 or item.liveURL.length > 0 %}
+                <div class="portfolio-item--project-links--wrapper column is-one-third">
+                    <div class="portfolio-field--wrapper">
+                        <div class="portfolio-field--label">Project Links</div>
+                        <div class="portfolio-field--content portfolio-item--project-links">
+
+                            {% if item.gitPageURL.length > 0 %}
+                                <a href="{{item.gitPageURL | urlencode }}" class="button" target="_blank">
+                                    <span class="icon is-small">
+                                        {%- if item.gitPageURL.indexOf('github.com') != -1 -%}
+                                            <i class="fa fa-github-alt"></i>
+                                        {%- elif item.gitPageURL.indexOf('gitlab.com') != -1 -%}
+                                            <i class="fa fa-gitlab"></i>
+                                        {%- elif item.gitPageURL.indexOf('bitbucket.org') != -1 -%}
+                                            <i class="fa fa-bitbucket"></i>
+                                        {%- else -%}
+                                            <i class="fa fa-git-square"></i>
+                                        {%- endif -%}
+                                    </span>
+                                    <span>Browse Git Repo</span>
+                                </a>
+                            {% endif %}
+
+                            {% if item.liveURL.length > 0 %}
+                                <a href="{{item.liveURL | urlencode}}" class="button" target="_blank">
+                                    <span>Launch Preview</span>
+                                    <span class="icon is-small">
+                                        <i class="fa fa-external-link"></i>
+                                    </span>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            {# Meta Data #}
+            {% if item.metadata %}
+                <aside class="portfolio-item--metadata--wrapper column is-full">
+                    <div class="portfolio-item--metadata">
+
+                        {# Tags #}
+                        {% if item.tags.length > 0 %}
+                            <dl class="portfolio-field--wrapper">
+                                <dt class="portfolio-field--label">Tags</dt>
+                                {%- for tag in item.tags -%}
+                                    <dd class="portfolio-field--content"><a href="/portfolio/tag/{{tag | urlencode}}">{{tag}}</a>{% if loop.last == false %},{% endif %}</dd>
+                                {%- endfor -%}
+                            </dl>
+                        {% endif %}
+
+                        {# Date Published #}
+                        {% if item.datePublished.length > 0 %}
+                            <dl class="portfolio-field--wrapper">
+                                <dt class="portfolio-field--label">Year</dt>
+                                <dd class="portfolio-field--content">{{item.datePublished | date('MM/YYYY')}}</dd>
+                            </dl>
+                        {% endif %}
+
+                        {# Design Credit #}
+                        {% if item.metadata.designCredit.length > 0 %}
+                            <dl class="portfolio-field--wrapper">
+                                <dt class="portfolio-field--label">Design Credit</dt>
+                                {% for designCredit in item.metadata.designCredit %}
+                                    <dd class="portfolio-field--content">{{designCredit}}{% if loop.last == false %},{% endif %}</dd>
+                                {% endfor %}
+                            </dl>
+                        {% endif %}
+
+                        {# Build Credit #}
+                        {% if item.metadata.buildCredit.length > 0 %}
+                            <dl class="portfolio-field--wrapper">
+                                <dt class="portfolio-field--label">Build Credit</dt>
+                                {% for buildCredit in item.metadata.buildCredit %}
+                                    <dd class="portfolio-field--content">{{buildCredit}}{% if loop.last == false %},{% endif %}</dd>
+                                {% endfor %}
+                            </dl>
+                        {% endif %}
+
+                        {# Typography #}
+                        {% if item.metadata.typography.length > 0 %}
+                            <dl class="portfolio-field--wrapper">
+                                <dt class="portfolio-field--label">Typography</dt>
+                                {% for typography in item.metadata.typography %}
+                                    <dd class="portfolio-field--content">{{typography}}{% if loop.last == false %},{% endif %}</dd>
+                                {% endfor %}
+                            </dl>
+                        {% endif %}
+
+                        {# Dimensions #}
+                        {% if item.metadata.dimensions.length > 0 %}
+                            <dl class="portfolio-field--wrapper">
+                                <dt class="portfolio-field--label">Dimensions</dt>
+                                {% for dimensions in item.metadata.dimensions %}
+                                    <dd class="portfolio-field--content">{{dimensions}}{% if loop.last == false %},{% endif %}</dd>
+                                {% endfor %}
+                            </dl>
+                        {% endif %}
+
+                        {# Client #}
+                        {% if item.metadata.client.length > 0 %}
+                            <dl class="portfolio-field--wrapper">
+                                <dt class="portfolio-field--label">
+                                    {%- if item.metadata.client.length > 1 -%}
+                                        Clients
+                                    {%- else -%}
+                                        Client
+                                    {%- endif -%}
+                                </dt>
+                                {% for client in item.metadata.client %}
+                                    <dd class="portfolio-field--content">{{client}}{% if loop.index < item.metadata.client.length %},{% endif %}</dd>
+                                {% endfor %}
+                            </dl>
+                        {% endif %}
+
+                        {# Production Time #}
+                        {% if item.metadata.productionTime.length > 0 %}
+                            <dl class="portfolio-field--wrapper">
+                                <dt class="portfolio-field--label">Production Time</dt>
+                                {% for productionTime in item.metadata.productionTime %}
+                                    <dd class="portfolio-field--content">{{productionTime}}{% if loop.index < item.metadata.productionTime.length %},{% endif %}</dd>
+                                {% endfor %}
+                            </dl>
+                        {% endif %}
+                    </div>
+                </aside>
+            {% endif %}
+
+            {# Thumbnails #}
+            {% if item.images %}
+
+                <div class="portfolio-item--thumbnails--wrapper column is-full">
+                    <div class="portfolio-item--thumbnails columns is-multiline is-mobile" id="portfolio-item--thumbnails">
+
+                        {% for image in item.images %}
+                            <figure class="portfolio-item--tile portfolio-item--thumbnail column image {% if loop.length == 1 %}is-full{% elif loop.length == 2 %}is-half{% else %}is-half-mobile is-one-third{% endif %} {% for tag in tags %} {{tag}}{% endfor %}">
+                                <a href="{{dataSrc}}/{{image.filename | urlencode}}.{{image.ext}}" target="_blank" title="{{image.description}}" rel="enlarge">
+                                    <img src="{{dataSrc}}/{{image.filename}}-lg.{{image.ext}}" alt="{{image.description}}">
+                                </a>
+                                {% if image.description %}<figcaption class="portfolio-item--thumbnail--caption">{{image.description}}</figcaption>{% endif %}
+                            </figure>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            {% endif %}
+        </main>
+    </div>
+</article>
+{% endblock %}

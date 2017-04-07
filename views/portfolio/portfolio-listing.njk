@@ -1,0 +1,61 @@
+{% extends "layouts/layout.njk" %}
+
+{% block title %}{{super()}} | Portfolio{% endblock %}
+
+{% block body %}
+<div class="portfolio-listing--wrapper">
+    <div class="portfolio-listing container content">
+        <div class="columns is-multiline">
+
+            <div class="portfolio-listing--title--wrapper column is-full">
+                <h1 class="portfolio-listing--title page--title">Portfolio</h1>
+            </div>
+
+            <div class="portfolio-listing--categories--wrapper column is-full">
+                <div class="portfolio-listing--categories">
+                    <ul>
+                        <li class="portfolio-listing--category portfolio-listing--category--design"><button>Design</button></li>
+                        <li class="portfolio-listing--category portfolio-listing--category--development"><button>Development</button></li>
+                        {# <li class="portfolio-listing--category portfolio-listing--category--web"><button>Web</button></li> #}
+                        <li class="portfolio-listing--category portfolio-listing--category--print"><button>Print</button></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="portfolio-listing--toc--wrapper column is-full">
+                <div class="portfolio-listing--toc columns is-gapless-mobile">
+                    {% if items %}
+                        {% for item in items %}
+
+                            {# Open a Column #}
+                            {% if (loop.index == 1) or (loop.index == ((items.length / 2) + 1) | round) %}
+                                <div class="portfolio-listing--toc--column column is-half">
+                            {% endif %}
+
+                                <article class="portfolio-listing--toc--item{% for tag in item.tags %} {{tag | dasherize | lower}}{% endfor %}">
+                                    <span>{{loop.index | padLeft('00')}}.</span>
+                                    <a class="portfolio-listing--toc--action" href="/{{item.section}}/{{item._id}}">{{item.title}}</a>
+                                    {% if item.categories %}
+                                        {% for category in item.categories %}
+                                            {% if category != 'web' %} {# Ignore Web because it is assumed. #}
+                                                <div class="portfolio-listing--signifier portfolio-listing--signifier--{{ category }}"></div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </article>
+
+                            {# Close a Column #}
+                            {% if (loop.index == (items.length / 2) | round) or (loop.index == items.length) %}
+                                </div>
+                            {% endif %}
+
+                        {% endfor %}
+                    {% else %}
+                        <p><em>Currently no portfolio items to display.</em></p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %}Brian Clark{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {# <link rel="apple-touch-icon" href="apple-touch-icon.png"> #}
+        {# Place favicon.ico in the root directory #}
+
+        <link href="https://fonts.googleapis.com/css?family=Oswald:300,600" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Space+Mono:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="/stylesheets/style.min.css">
+    </head>
+    <body class="loading">
+        <!--[if lt IE 10]>
+            <p class="browserupgrade message is-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        {# Header #}
+        <nav class="header--wrapper">
+            <button class="header--button--dinner" id="header--button--dinner">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+
+        {# Main (Page) #}
+        <div class="page--main--wrapper">
+            <div class="page--main">
+                {% block body %}{% endblock %}
+            </div>
+            <div class="page--main--overlay" id="page--main--overlay"></div>
+        </div>
+
+        {# Dinner #}
+        <div class="dinner--wrapper">
+            <div class="dinner--logomark">[<a href="/">BC</a>]</div>
+            <div class="dinner">
+
+                {# Main Menu #}
+                <nav class="dinner--menu--main container">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/portfolio">Portfolio</a></li>
+                        <li>
+                            <span class="icon"><i class="fa fa-github"></i></span>
+                            <a href="https://github.com/buraian" target="_blank">Github</a>
+                        </li>
+                        {#
+                        <li>
+                            <span class="icon"><i class="fa fa-gitlab"></i></span>
+                            <a href="https://gitlab.com/buraian" target="_blank">GitLab</a>
+                        </li>
+                        <li>
+                            <span class="icon"><i class="fa fa-bitbucket"></i></span>
+                            <a href="https://bitbucket.org/buraian/" target="_blank">Bitbucket</a>
+                        </li>
+                        #}
+                    </ul>
+                </nav>
+
+                {# Love #}
+                <div class="dinner--love--wrapper">
+                    <div class="dinner--love">
+                        <div class="dinner--love--title">Built With</div>
+                        <ul>
+                            <li class="dinner--love--item dinner--love--html5" title="HTML5" style="background-image: url('/images/love/i-love-html5.svg')"></li>
+                            <li class="dinner--love--item dinner--love--css3" title="CSS3" style="background-image: url('/images/love/i-love-css3.svg')"></li>
+                            <li class="dinner--love--item dinner--love--sass" title="Sass" style="background-image: url('/images/love/i-love-sass.svg')">
+                                <a href="//www.sass-lang.com/" target="_blank"></a>
+                            </li>
+                            <li class="dinner--love--item dinner--love--javascript" title="JavaScript" style="background-image: url('/images/love/i-love-javascript.svg')"></li>
+                            <li class="dinner--love--item dinner--love--nodejs" title="Node JS" style="background-image: url('/images/love/i-love-nodejs.svg')">
+                                <a href="//nodejs.org/" target="_blank"></a>
+                            </li>
+                            <li class="dinner--love--item dinner--love--npm" title="NPM" style="background-image: url('/images/love/i-love-npm.svg')">
+                                <a href="//www.npmjs.com/" target="_blank"></a>
+                            </li>
+                            <li class="dinner--love--item dinner--love--sublime" title="Sublime Text" style="background-image: url('/images/love/i-love-sublime.svg')">
+                                <a href="//www.sublimetext.com/" target="_blank"></a>
+                            </li>
+                            <li class="dinner--love--item dinner--love--grunt" title="Grunt" style="background-image: url('/images/love/i-love-grunt.svg')">
+                                <a href="//www.gruntjs.com/" target="_blank"></a>
+                            </li>
+                            <li class="dinner--love--item dinner--love--git" title="Git" style="background-image: url('/images/love/i-love-git.svg')">
+                                <a href="//git-scm.com/" target="_blank"></a>
+                            </li>
+                            <li class="dinner--love--item dinner--love--expressjs" title="Express JS" style="background-image: url('/images/love/i-love-expressjs.svg')">
+                                <a href="//expressjs.com/" target="_blank"></a>
+                            </li>
+                            <li class="dinner--love--item dinner--love--mdn" title="Mozilla Developer Network" style="background-image: url('/images/love/i-love-mdn.svg')">
+                                <a href="//developer.mozilla.org/" target="_blank"></a>
+                            </li>
+                            <li class="dinner--love--item dinner--love--apple" title="Apple" style="background-image: url('/images/love/i-love-apple.svg')">
+                                <a href="//www.apple.com/" target="_blank"></a>
+                            </li>
+                            <li class="dinner--love--item dinner--love--adobecc" title="Adobe Creative Cloud" style="background-image: url('/images/love/i-love-adobecc.svg')">
+                                <a href="//www.adobe.com/" target="_blank"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% block scripts %}
+            <script src="/javascripts/main.min.js"></script>
+        {% endblock %}
+
+        {# Google Analytics: change UA-XXXXX-Y to be your site's ID. #}
+        <script>
+            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+            ga('create','UA-51581007-1','auto');ga('send','pageview')
+        </script>
+        <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    </body>
+</html>
