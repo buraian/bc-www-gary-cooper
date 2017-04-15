@@ -3535,7 +3535,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var offclick = document.getElementById('page--main--overlay');
 
     function exposeDinnerMenu(e) {
-        document.body.classList.toggle('dinner-menu-exposed');
+        document.body.classList.toggle('state--dinner-menu-exposed');
     }
 
     hamburger.addEventListener('click', exposeDinnerMenu, false);
