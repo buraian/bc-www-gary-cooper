@@ -21,7 +21,7 @@ module.exports = (grunt) ->
             """
 
         # Paths
-        assets: 'assets'
+        assets: 'src/assets'
         public: 'public'
 
         concat:
