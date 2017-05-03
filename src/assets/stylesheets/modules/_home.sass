@@ -28,8 +28,17 @@
       letter-spacing: -1.75px
 
   &--bio
-    border-top: 1px solid rgba($grey-dark, .5)
     padding: 1rem 0
+    position: relative
     text-align: center
+
+    &:before
+      background-color: rgba($grey-dark, .5)
+      content: ''
+      height: 1px
+      left: 20%
+      position: absolute
+      right: 20%
+      top: 0
 
     &--wrapper

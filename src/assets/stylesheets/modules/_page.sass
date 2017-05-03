@@ -16,11 +16,21 @@
     display: flex
     justify-content: center
     min-height: 100%
-    padding: (1rem + 5) (1rem + 1) (1rem + 9)
+    padding: (1rem + 5) (1rem + 1) (1rem + 12)
     position: relative
 
+    +mobile
+
+      @media screen and (orientation: portrait)
+        padding-bottom: 14rem
+
     +from($tablet)
-      padding: (4rem + 5) (4rem + 4) (4rem + 9)
+      padding: (4rem + 5) (4rem + 4) (4rem + 12)
+
+    +tablet-only
+
+      @media screen and (orientation: portrait)
+        padding-bottom: 18rem
 
     &:before
       border: 1px solid $grey-light
@@ -76,7 +86,7 @@
         left: 0
         position: fixed
         right: 0
-        top: 80%
+        top: 60%
 
     &--overlay
       bottom: 0
