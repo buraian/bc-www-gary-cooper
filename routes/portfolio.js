@@ -4,7 +4,7 @@ var router = express.Router();
 
 // Portfolio Listing Page
 router.get('/', function(req, res, next) {
-    var requestUrl = req.app.get('remotePortfolio').api + '/portfolio/items';
+    var requestUrl = `${req.app.get('remotePortfolio').api}/portfolio/items`;
     request.get({ url: requestUrl }, function(error, response, body) {
         if ( error || response.statusCode != 200 ) return;
 
@@ -16,13 +16,13 @@ router.get('/', function(req, res, next) {
 
 // Portfolio Item Page
 router.get('/:id', function(req, res, next) {
-    var requestUrl = req.app.get('remotePortfolio').api + '/portfolio/items/' + req.params.id;
+    var requestUrl = `${req.app.get('remotePortfolio').api}/portfolio/items/${req.params.id}`;
     request.get({ url: requestUrl }, function(error, response, body) {
         if ( error || response.statusCode != 200 ) return;
 
         res.render('portfolio/portfolio-item', {
             item: JSON.parse(body),
-            dataSrc: req.app.get('remotePortfolio').images + '/portfolio'
+            dataSrc: `${req.app.get('remotePortfolio').images}/portfolio`
         });
     });
 });
