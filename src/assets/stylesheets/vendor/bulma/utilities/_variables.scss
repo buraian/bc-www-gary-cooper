@@ -74,10 +74,10 @@ $monokai-soda: (
 // Typography
 $family-title: "Sardonyx", serif;
 $family-subtitle: "Avenir Next", "Helvetica Neue", "Oswald", sans-serif;
-$family-label: "Oswald", sans-serif;
+$family-label: $family-subtitle;
 $family-handwritten: "Tillana", sans-serif;
 // $family-sans-serif: "Times New Roman", "Times", times, sans-serif;
-$family-monospace: "Space Mono", "Consolas", "Monaco", monospace;
+$family-monospace: "Courier", monospace;
 
 // $size-1: 3.5rem !default;
 // $size-2: 2.75rem !default;
@@ -189,3 +189,4 @@ $link-visited: $grey-dark; // $purple !default
 // X. Not Included
 $body-background: map-get($monokai-soda, Colour2);
 $body-size: $size-normal;
+$default-ttf: cubic-bezier(0.4, 0, 0.2, 1)

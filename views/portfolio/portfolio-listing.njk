@@ -5,11 +5,15 @@
 {% block body %}
 <div class="portfolio-listing--wrapper">
     <div class="portfolio-listing container content">
-        <div class="columns is-multiline">
+        {# <div class="columns is-multiline"> #}
 
-            <div class="portfolio-listing--title--wrapper column is-full">
-                <h1 class="portfolio-listing--title page--title">Portfolio</h1>
-            </div>
+            <header class="portfolio-listing--header">
+                {% include "partials/kicker-portfolio.njk" %}
+
+                <div class="portfolio-listing--title--wrapper column is-full">
+                    <h1 class="portfolio-listing--title page--title">Portfolio</h1>
+                </div>
+            </header>
 
             <div class="portfolio-listing--categories--wrapper column is-full">
                 <div class="portfolio-listing--categories">
@@ -55,7 +59,7 @@
                     {% endif %}
                 </div>
             </div>
-        </div>
+        {# </div> #}
     </div>
 </div>
 {% endblock %}

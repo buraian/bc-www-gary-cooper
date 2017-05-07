@@ -12,7 +12,6 @@
         font-size: 10vh
 
   &--main
-    align-items: center
     display: flex
     justify-content: center
     min-height: 100%
@@ -60,20 +59,23 @@
       overflow-y: auto
       position: absolute
       top: 0
-      transform-origin: center center
+      transform-origin: center bottom
       transition-duration: .3s
       transition-property: transform
-      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+      transition-timing-function: $default-ttf
       width: 100%
       z-index: 10
+
+      +from($tablet)
+        transform-origin: 20% 50%
 
       .state--dinner-menu-exposed &
         box-shadow: 0 0 .5rem 0 $black
         overflow: hidden
-        transform: scale(.4)
+        transform: scale(.9) translateY(90%)
 
         +from($tablet)
-          transform: scale(.5)
+          transform: scale(.6)
 
       &:before
         background-image: url('/images/greenery-bg.gif')
@@ -107,6 +109,4 @@
 
       &:focus,
       &:hover
-        background-image: linear-gradient(rgba(map-get($monokai-soda, Colour11), .5) 2px, transparent 2px), linear-gradient(90deg, rgba(map-get($monokai-soda, Colour11), .5) 2px, transparent 2px)
-        background-size: 1.5rem 1.5rem, 1.5rem 1.5rem
-        background-position: -1px -1px, -1px -1px
+        background-color: rgba(map-get($monokai-soda, Colour11), .5)
