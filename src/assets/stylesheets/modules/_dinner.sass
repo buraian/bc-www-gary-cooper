@@ -36,7 +36,7 @@
     z-index: 10
 
     +from($tablet)
-      width: 25%
+      width: 33.33%
 
   &--menu
 
@@ -78,13 +78,11 @@
           > ul
 
             > li
-              padding: 0 1em
+              padding: 0 1em 0 2em
               position: relative
               text-transform: none
 
-              &:before
-                color: lighten( map-get($monokai-soda, Colour2), 5% )
-                content: '\22A2'
+              span
                 left: 0
                 position: absolute
 

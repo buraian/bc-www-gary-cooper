@@ -12,41 +12,12 @@
         font-size: 10vh
 
   &--main
-    display: flex
-    justify-content: center
-    min-height: 100%
-    padding: (1rem + 5) (1rem + 1) (1rem + 12)
-    position: relative
-
-    +mobile
-
-      @media screen and (orientation: portrait)
-        padding-bottom: 14rem
-
-    +from($tablet)
-      padding: (4rem + 5) (4rem + 4) (4rem + 12)
-
-    +tablet-only
-
-      @media screen and (orientation: portrait)
-        padding-bottom: 18rem
-
-    &:before
-      border: 1px solid $grey-light
-      bottom: 1rem
-      content: ''
-      display: block
-      left: 1rem
-      mix-blend-mode: exclusion
-      position: absolute
-      right: 1rem
-      top: 1rem
-
-      +from($tablet)
-        bottom: 4rem
-        left: 4rem
-        right: 4rem
-        top: 4rem
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
 
     a
       text-decoration: none
@@ -75,9 +46,41 @@
         transform: scale(.9) translateY(90%)
 
         +from($tablet)
-          transform: scale(.6)
+          transform: scale(.5)
+
+    &--content
+      display: flex
+      justify-content: center
+      min-height: 100%
+      padding: (1rem + 5) (1rem + 1) calc(1rem + 40vh)
+      position: relative
+
+      +mobile
+
+        @media screen and (orientation: portrait)
+          padding-bottom: 14rem
+
+      +from($tablet)
+        padding: (4rem + 5) (4rem + 4) calc(4rem + 40vh)
 
       &:before
+        border: 1px solid $grey-light
+        bottom: 1rem
+        content: ''
+        display: block
+        left: 1rem
+        mix-blend-mode: exclusion
+        position: absolute
+        right: 1rem
+        top: 1rem
+
+        +from($tablet)
+          bottom: 4rem
+          left: 4rem
+          right: 4rem
+          top: 4rem
+
+      &:after
         background-image: url('/images/greenery-bg.gif')
         background-position: center top
         background-repeat: no-repeat
@@ -85,10 +88,11 @@
         bottom: 0
         content: ''
         display: block
+        height: 40vh
         left: 0
-        position: fixed
+        position: absolute
         right: 0
-        top: 60%
+        z-index: -1
 
     &--overlay
       bottom: 0

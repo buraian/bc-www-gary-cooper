@@ -31,7 +31,9 @@
         {# Main (Page) #}
         <div class="page--main--wrapper">
             <div class="page--main">
-                {% block body %}{% endblock %}
+                <div class="page--main--content">
+                    {% block body %}{% endblock %}
+                </div>
             </div>
             <div class="page--main--overlay" id="page--main--overlay"></div>
         </div>
