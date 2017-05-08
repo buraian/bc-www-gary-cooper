@@ -4,8 +4,8 @@ var router = express.Router();
 
 // Portfolio Listing Page
 router.get('/', function(req, res, next) {
-    var requestUrl = `${req.app.get('remotePortfolio').api}/portfolio/items`;
-    request.get({ url: requestUrl }, function(error, response, body) {
+    var allItems = `${req.app.get('remotePortfolio').api}/portfolio/items`;
+    request.get({ url: allItems }, function(error, response, body) {
         if ( error || response.statusCode != 200 ) return;
 
         res.render('portfolio/portfolio-listing', {
@@ -16,13 +16,27 @@ router.get('/', function(req, res, next) {
 
 // Portfolio Item Page
 router.get('/:id', function(req, res, next) {
-    var requestUrl = `${req.app.get('remotePortfolio').api}/portfolio/items/${req.params.id}`;
-    request.get({ url: requestUrl }, function(error, response, body) {
+    var items;
+
+    // Get All Items
+    request.get({
+        url: `${req.app.get('remotePortfolio').api}/portfolio/items`
+    }, function(error, response, body) {
         if ( error || response.statusCode != 200 ) return;
 
-        res.render('portfolio/portfolio-item', {
-            item: JSON.parse(body),
-            dataSrc: `${req.app.get('remotePortfolio').images}/portfolio`
+        items = JSON.parse(body);
+
+        // Get Requested Item
+        request.get({
+            url: `${req.app.get('remotePortfolio').api}/portfolio/items/${req.params.id}`
+        }, function(error, response, body) {
+            if ( error || response.statusCode != 200 ) return;
+
+            res.render('portfolio/portfolio-item', {
+                items: items,
+                item: JSON.parse(body),
+                dataSrc: `${req.app.get('remotePortfolio').images}/portfolio`
+            });
         });
     });
 });
