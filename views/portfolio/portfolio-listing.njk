@@ -15,13 +15,12 @@
                 </div>
             </header>
 
-            <div class="portfolio-listing--categories--wrapper column is-full">
-                <div class="portfolio-listing--categories">
+            <div class="portfolio-listing--roles--wrapper column is-full">
+                <div class="portfolio-listing--roles">
                     <ul>
-                        <li class="portfolio-listing--category portfolio-listing--category--design"><button>Design</button></li>
-                        <li class="portfolio-listing--category portfolio-listing--category--development"><button>Development</button></li>
-                        {# <li class="portfolio-listing--category portfolio-listing--category--web"><button>Web</button></li> #}
-                        <li class="portfolio-listing--category portfolio-listing--category--print"><button>Print</button></li>
+                        <li class="portfolio-listing--role portfolio-listing--role--design"><button>Design</button></li>
+                        <li class="portfolio-listing--role portfolio-listing--role--development"><button>Development</button></li>
+                        <li class="portfolio-listing--role portfolio-listing--role--layout"><button>Layout</button></li>
                     </ul>
                 </div>
             </div>
@@ -31,25 +30,28 @@
                     {% if items %}
                         {% for item in items %}
 
+                            {% set numOfColumns = 3 %}
+                            {% set itemsPerColumn = (((items.length / numOfColumns) + 0.4) | round ) %} {# Adding .4 to ensure round up #}
+                            {% set openColumn = (loop.index - 1) % itemsPerColumn %}
+                            {% set closeColumn = loop.index % itemsPerColumn %}
+
                             {# Open a Column #}
-                            {% if (loop.index == 1) or (loop.index == ((items.length / 2) + 1) | round) %}
-                                <div class="portfolio-listing--toc--column column is-half">
+                            {% if (loop.index == 1 or not openColumn) %}
+                                <div class="portfolio-listing--toc--column column is-one-third">
                             {% endif %}
 
-                                <article class="portfolio-listing--toc--item{% for tag in item.tags %} {{tag | dasherize | lower}}{% endfor %}">
+                                <article class="portfolio-listing--toc--item{% for feature in item.features %} {{feature | dasherize | lower}}{% endfor %}">
                                     <span>{{loop.index | padLeft('00')}}.</span>
-                                    <a class="portfolio-listing--toc--action" href="/{{item.section}}/{{item._id}}">{{item.title}}</a>
-                                    {% if item.categories %}
-                                        {% for category in item.categories %}
-                                            {% if category != 'web' %} {# Ignore Web because it is assumed. #}
-                                                <div class="portfolio-listing--signifier portfolio-listing--signifier--{{ category }}"></div>
-                                            {% endif %}
-                                        {% endfor %}
+                                    <a class="portfolio-listing--toc--action" href="/portfolio/{{item._id}}">{{item.title}}</a>
+                                    {% if item.roles %}
+                                        {%- for role in item.roles -%}
+                                            <div class="portfolio-listing--signifier portfolio-listing--signifier--{{role | dasherize | lower}}"></div>
+                                        {%- endfor -%}
                                     {% endif %}
                                 </article>
 
                             {# Close a Column #}
-                            {% if (loop.index == (items.length / 2) | round) or (loop.index == items.length) %}
+                            {% if (loop.index == items.length or not closeColumn) %}
                                 </div>
                             {% endif %}
 

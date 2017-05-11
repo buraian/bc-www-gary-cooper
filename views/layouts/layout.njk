@@ -25,6 +25,7 @@
                 <span></span>
                 <span></span>
                 <span></span>
+                <div>Menu</div>
             </button>
         </nav>
 
@@ -43,6 +44,9 @@
             <div class="dinner">
                 <div class="dinner--aside">
 
+                    {# Logotype #}
+                    <div class="dinner--logomark">brian-clark.com</div>
+
                     {# Main Menu #}
                     <nav class="dinner--menu--main container">
                         <ul>
@@ -54,7 +58,7 @@
                                         {% for item in items %}
                                             <li class="{% for tag in item.tags %} {{tag | dasherize | lower}}{% endfor %}">
                                                 <span>{{loop.index | padLeft('00')}}.</span>
-                                                <a class="" href="/{{item.section}}/{{item._id}}">{{item.title}}</a>
+                                                <a class="" href="/portfolio/{{item._id}}">{{item.title}}</a>
                                             </li>
                                         {% endfor %}
                                     </ul>
@@ -77,9 +81,6 @@
                             #}
                         </ul>
                     </nav>
-
-                    {# Logotype #}
-                    <div class="dinner--logomark">brian-clark.com</div>
 
                     {# Love #}
                     <div class="dinner--love--wrapper">

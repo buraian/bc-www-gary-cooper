@@ -40,6 +40,9 @@
       +from($tablet)
         transform-origin: 20% 50%
 
+        @media screen and (orientation: portrait)
+          transform-origin: 10% 50%
+
       .state--dinner-menu-exposed &
         box-shadow: 0 0 .5rem 0 $black
         overflow: hidden
@@ -58,7 +61,7 @@
       +mobile
 
         @media screen and (orientation: portrait)
-          padding-bottom: 14rem
+          padding-bottom: 17rem
 
       +from($tablet)
         padding: (4rem + 5) (4rem + 4) calc(4rem + 40vh)

@@ -3,38 +3,50 @@
 .header
 
   &--wrapper
-    left: 0
+    background-color: $grey-dark
+    height: 2rem
     position: absolute
     right: 0
-    top: 0
+    top: 3rem
+    width: 7rem
     z-index: 100
+
+    +from($tablet)
+      top: 5rem
 
   &--button
 
     // https://codepen.io/designcouch/pen/Atyop
     &--dinner
       +button-reset
+      color: $grey-light
       cursor: pointer
+      font-family: $family-label
+      font-weight: normal
       height: 20px
-      right: 1.4rem
+      left: .5rem
+      padding-left: 2rem
       position: absolute
-      top: 1.6rem
+      text-transform: uppercase
+      top: 6px
       transform: rotate(0deg)
       transition: .5s $default-ttf
-      width: 28px
+
+      .state--dinner-menu-exposed &
+        color: map-get($monokai-soda, Colour11)
 
       span
         display: block
         position: absolute
         height: 2px
-        width: 50%
-        background: $grey-dark
+        width: 12px
+        background-color: $grey-light
         opacity: 1
         transform: rotate(0deg)
         transition: .25s $default-ttf
 
         &:nth-child(even)
-          left: 50%
+          left: 12px
           border-radius: 0 9px 9px 0
 
         &:nth-child(odd)
@@ -43,18 +55,18 @@
 
         &:nth-child(1),
         &:nth-child(2)
-          top: 0
+          top: 2px
 
         &:nth-child(3),
         &:nth-child(4)
-          top: 8px
+          top: 9px
 
         &:nth-child(5),
         &:nth-child(6)
           top: 16px
 
         .state--dinner-menu-exposed &
-          background: map-get($monokai-soda, Colour11)
+          background-color: map-get($monokai-soda, Colour11)
 
           &:nth-child(1),
           &:nth-child(6)
@@ -66,14 +78,14 @@
 
           &:nth-child(1)
             left: 2px
-            top: 2px
+            top: 5px
 
           &:nth-child(2)
-            left: calc(50% - 2px)
-            top: 2px
+            left: calc(12px - 2px)
+            top: 5px
 
           &:nth-child(3)
-            left: -50%
+            left: -12px
             opacity: 0
 
           &:nth-child(4)
@@ -82,8 +94,8 @@
 
           &:nth-child(5)
             left: 2px
-            top: 12px
+            top: 13px
 
           &:nth-child(6)
-            left: calc(50% - 2px)
-            top: 12px
+            left: calc(12px - 2px)
+            top: 13px

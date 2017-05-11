@@ -79,7 +79,7 @@
                             <dl class="portfolio-field--wrapper">
                                 <dt class="portfolio-field--label">Tags</dt>
                                 {%- for tag in item.tags -%}
-                                    <dd class="portfolio-field--content"><a href="/portfolio/tag/{{tag | urlencode}}">{{tag}}</a>{% if loop.last == false %},{% endif %}</dd>
+                                    <dd class="portfolio-field--content">{# <a href="/portfolio/tag/{{tag | urlencode}}"> #}{{tag}}{# </a> #}{% if loop.last == false %},{% endif %}</dd>
                                 {%- endfor -%}
                             </dl>
                         {% endif %}
@@ -87,7 +87,7 @@
                         {# Date Published #}
                         {% if item.datePublished.length > 0 %}
                             <dl class="portfolio-field--wrapper">
-                                <dt class="portfolio-field--label">Year</dt>
+                                <dt class="portfolio-field--label">Date</dt>
                                 <dd class="portfolio-field--content">{{item.datePublished | date('MM/YYYY')}}</dd>
                             </dl>
                         {% endif %}
@@ -170,7 +170,7 @@
                         {% for image in item.images %}
                             <figure class="portfolio-item--tile portfolio-item--thumbnail column image {% if loop.length == 1 %}is-full{% elif loop.length == 2 %}is-half{% else %}is-half-mobile is-one-third{% endif %} {% for tag in tags %} {{tag}}{% endfor %}">
                                 <a href="{{dataSrc}}/{{image.filename | urlencode}}.{{image.ext}}" target="_blank" title="{{image.description}}" rel="enlarge">
-                                    <img src="{{dataSrc}}/{{image.filename}}-lg.{{image.ext}}" alt="{{image.description}}">
+                                    <img src="{{dataSrc}}/{{image.filename}}-sm.{{image.ext}}" alt="{{image.description}}">
                                 </a>
                                 {% if image.description %}<figcaption class="portfolio-item--thumbnail--caption">{{image.description}}</figcaption>{% endif %}
                             </figure>
