@@ -29,7 +29,7 @@ var njk = expressNunjucks(app, {
     filters: {
         date: require('nunjucks-date'),
         dasherize: function(str) {
-            return str.replace(/\s/, '-');
+            return str.replace(/\s/g, '-');
         },
         padLeft: function(str, pad = '000') {
             return (pad + str).slice(-pad.length);
