@@ -26,7 +26,7 @@
             </div>
 
             <div class="portfolio-listing--toc--wrapper column is-full">
-                <div class="portfolio-listing--toc columns is-gapless-mobile">
+                <div class="portfolio-listing--toc columns is-multiline is-gapless-mobile">
                     {% if items %}
                         {% for item in items %}
 
@@ -37,7 +37,7 @@
 
                             {# Open a Column #}
                             {% if (loop.index == 1 or not openColumn) %}
-                                <div class="portfolio-listing--toc--column column is-one-third">
+                                <div class="portfolio-listing--toc--column column is-one-third-desktop">
                             {% endif %}
 
                                 <article class="portfolio-listing--toc--item{% for feature in item.features %} {{feature | dasherize | lower}}{% endfor %}">

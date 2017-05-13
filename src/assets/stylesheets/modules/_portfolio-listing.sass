@@ -29,7 +29,7 @@
   &--role
     display: block
     margin: 0
-    padding: 1.5rem 1.75rem 0
+    padding: 0 1rem
     position: relative
 
     +from($tablet)
@@ -39,13 +39,10 @@
       background-color: $grey-dark
       border-radius: 100px
       content: ''
-      display: block
+      display: inline-block
       height: .75rem
-      left: 50%
-      margin-left: -.375rem
+      margin-right: .5rem
       mix-blend-mode: screen
-      position: absolute
-      top: .25rem
       width: .75rem
 
     button
@@ -60,16 +57,6 @@
 
       &:before
         background-color: map-get($monokai-soda, Colour17)
-
-    // &--web
-
-    //   &:before
-    //     background-color: map-get($monokai-soda, Colour10)
-
-    &--design
-
-      &:before
-        background-color: map-get($monokai-soda, Colour12)
 
   &--signifier
     background-color: $grey-dark
@@ -86,12 +73,6 @@
     &--development
       background-color: map-get($monokai-soda, Colour17)
 
-    // &--web
-    //   background-color: map-get($monokai-soda, Colour10)
-
-    &--design
-      background-color: map-get($monokai-soda, Colour12)
-
   &--toc
 
     &--wrapper
@@ -104,7 +85,7 @@
     &--item
       border-bottom: 1px solid $grey-dark
       font-family: $family-handwritten
-      padding: .5em 1em 0 2em
+      padding: .5em 1em 0 1.8em
       position: relative
       white-space: nowrap
 
