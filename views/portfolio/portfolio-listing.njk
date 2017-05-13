@@ -31,7 +31,7 @@
                         {% for item in items %}
 
                             {% set numOfColumns = 3 %}
-                            {% set itemsPerColumn = (((items.length / numOfColumns) + 0.4) | round ) %} {# Adding .4 to ensure round up #}
+                            {% set itemsPerColumn = ( (items.length / numOfColumns) | round(0, 'ceil') ) %}
                             {% set openColumn = (loop.index - 1) % itemsPerColumn %}
                             {% set closeColumn = loop.index % itemsPerColumn %}
 
