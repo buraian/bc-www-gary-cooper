@@ -3617,7 +3617,7 @@ window.addEventListener('load', function() {
 
     // Colorize Thumbs
     var thumbs = document.getElementsByClassName('portfolio-item--thumbnail');
-    if (thumbs) {
+    if (thumbs.length > 0) {
         var counter = 0;
         var i = setInterval(function() {
             if (counter === thumbs.length - 1) clearInterval(i);
