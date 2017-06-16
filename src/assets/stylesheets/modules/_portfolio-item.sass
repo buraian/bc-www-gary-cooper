@@ -55,36 +55,31 @@
   &--thumbnails
 
   &--thumbnail
+    transition: .25s $default-ttf
 
     a
-      background-color: rgba($white, .3)
-      border: 1px solid $grey-dark
       display: block
-      padding: .5rem
-      position: relative
       transition: .6s
 
-      &:after
-        border: 1px solid #ffffff
-        bottom: 0
-        content: ""
-        display: block
-        left: 0
-        position: absolute
-        right: 0
-        top: 0
-
       img
-        filter: grayscale(1)
-        mix-blend-mode: multiply
+        transform-origin: 50% 0%
+        transition: .25s $default-ttf
 
       &:focus,
       &:hover
         background-color: $white
 
         img
-          mix-blend-mode: unset
-          filter: none
+          transform: scale(1.025)
+
+    &.loading
+      opacity: 0
+      transform: translateY(100px)
+
+      a
+
+        img
+          filter: grayscale(1)
 
     &--caption
       font-size: .8em

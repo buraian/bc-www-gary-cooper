@@ -174,7 +174,7 @@
                     <div class="portfolio-item--thumbnails columns is-multiline is-mobile" id="portfolio-item--thumbnails">
 
                         {% for image in item.images %}
-                            <figure class="portfolio-item--tile portfolio-item--thumbnail column image {% if loop.length == 1 %}is-full{% elif loop.length == 2 %}is-half{% else %}is-half-mobile is-one-third{% endif %} {% for feature in features %} {{feature}}{% endfor %}">
+                            <figure class="portfolio-item--tile portfolio-item--thumbnail column image loading {% if loop.length == 1 %}is-full{% elif loop.length == 2 %}is-half{% else %}is-half-mobile is-one-third{% endif %} {% for feature in features %} {{feature}}{% endfor %}">
                                 <a href="{{dataSrc}}/{{image.filename | urlencode}}.{{image.ext}}" target="_blank" title="{{image.description}}" rel="enlarge">
                                     <img src="{{dataSrc}}/{{image.filename}}-sm.{{image.ext}}" alt="{{image.description}}">
                                 </a>
