@@ -84,3 +84,85 @@
     &--caption
       font-size: .8em
       margin: .5em 0 1em
+
+  &--previous-item
+    align-items: center
+    background-color: $grey-light
+    border-radius: 100px
+    border: 1px solid $grey-dark
+    display: flex
+    font-size: 28px
+    height: 48px
+    justify-content: center
+    left: -0.5rem
+    margin-top: -24px
+    position: fixed
+    top: 50%
+    width: 48px
+
+    +from($tablet)
+      font-size: 36px
+      height: 64px
+      margin-top: -32px
+      left: 2rem
+      width: 64px
+
+    &:after
+      border: 1px solid $white
+      border-radius: 100px
+      bottom: 0
+      content: ""
+      display: block
+      left: 0
+      position: absolute
+      right: 0
+      top: 0
+      transition: .25s $default-ttf
+      z-index: -1
+
+    &:focus,
+    &:hover
+
+      &:after
+        background-color: rgba($white, .3)
+
+  &--next-item
+    align-items: center
+    background-color: $grey-light
+    border-radius: 100px
+    border: 1px solid $grey-dark
+    display: flex
+    font-size: 28px
+    height: 48px
+    justify-content: center
+    margin-top: -24px
+    position: fixed
+    right: -0.5rem
+    top: 50%
+    width: 48px
+
+    +from($tablet)
+      font-size: 36px
+      height: 64px
+      margin-top: -32px
+      right: 2rem
+      width: 64px
+
+    &:after
+      border: 1px solid $white
+      border-radius: 100px
+      bottom: 0
+      content: ""
+      display: block
+      left: 0
+      position: absolute
+      right: 0
+      top: 0
+      transition: .25s $default-ttf
+      z-index: -1
+
+    &:focus,
+    &:hover
+
+      &:after
+        background-color: rgba($white, .3)

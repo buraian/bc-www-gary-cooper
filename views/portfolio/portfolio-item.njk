@@ -1,19 +1,19 @@
 {% extends "layouts/layout.njk" %}
 
-{% block title %}{{super()}} | Portfolio | {{item.title}}{% endblock %}
+{% block title %}{{super()}} | Portfolio | {{item.current.title}}{% endblock %}
 
 {% block body %}
 <article class="portfolio-item--article--wrapper">
-    <div class="portfolio-item--article {% for feature in item.features %} {{feature}}{% endfor %} container content">
+    <div class="portfolio-item--article {% for feature in item.current.features %} {{feature}}{% endfor %} container content">
 
         {# Header #}
-        <header class="portfolio-item--header">
+        <header class="portfolio-item--header--wrapper">
 
             {% include "partials/kicker-portfolio.njk" %}
 
             {# Title #}
             <div class="portfolio-item--title--wrapper">
-                <h1 class="portfolio-item--title page--title">{{item.title}}</h1>
+                <h1 class="portfolio-item--title page--title">{{item.current.title}}</h1>
             </div>
         </header>
 
@@ -21,20 +21,20 @@
         <main class="portfolio-item--main columns is-multiline">
 
             {# Project Links #}
-            {% if item.gitPageURL.length > 0 or item.liveURL.length > 0 %}
+            {% if item.current.gitPageURL.length > 0 or item.current.liveURL.length > 0 %}
                 <div class="portfolio-item--project-links--wrapper column">
                     <div class="portfolio-field--wrapper">
                         <div class="portfolio-field--label">Project Links</div>
                         <div class="portfolio-field--content portfolio-item--project-links">
 
-                            {% if item.gitPageURL.length > 0 %}
-                                <a href="{{item.gitPageURL | urlencode }}" class="button" target="_blank">
+                            {% if item.current.gitPageURL.length > 0 %}
+                                <a href="{{item.current.gitPageURL | urlencode }}" class="button" target="_blank">
                                     <span class="icon is-small">
-                                        {%- if item.gitPageURL.indexOf('github.com') != -1 -%}
+                                        {%- if item.current.gitPageURL.indexOf('github.com') != -1 -%}
                                             <i class="fa fa-github-alt"></i>
-                                        {%- elif item.gitPageURL.indexOf('gitlab.com') != -1 -%}
+                                        {%- elif item.current.gitPageURL.indexOf('gitlab.com') != -1 -%}
                                             <i class="fa fa-gitlab"></i>
-                                        {%- elif item.gitPageURL.indexOf('bitbucket.org') != -1 -%}
+                                        {%- elif item.current.gitPageURL.indexOf('bitbucket.org') != -1 -%}
                                             <i class="fa fa-bitbucket"></i>
                                         {%- else -%}
                                             <i class="fa fa-git-square"></i>
@@ -44,8 +44,8 @@
                                 </a>
                             {% endif %}
 
-                            {% if item.liveURL.length > 0 %}
-                                <a href="{{item.liveURL | urlencode}}" class="button" target="_blank">
+                            {% if item.current.liveURL.length > 0 %}
+                                <a href="{{item.current.liveURL | urlencode}}" class="button" target="_blank">
                                     <span>Launch Project</span>
                                     <span class="icon is-small">
                                         <i class="fa fa-external-link"></i>
@@ -58,108 +58,108 @@
             {% endif %}
 
             {# Meta Data #}
-            {% if item.metadata %}
+            {% if item.current.metadata %}
                 <aside class="portfolio-item--metadata--wrapper column is-full">
                     <div class="portfolio-item--metadata">
 
                         {# Project Type #}
-                        {% if item.projectType.length > 0 %}
+                        {% if item.current.projectType.length > 0 %}
                             <dl class="portfolio-field--wrapper">
                                 <dt class="portfolio-field--label">Project Type</dt>
-                                <dd class="portfolio-field--content">{{item.projectType}}{% if loop.last == false %},{% endif %}</dd>
+                                <dd class="portfolio-field--content">{{item.current.projectType}}{% if loop.last == false %},{% endif %}</dd>
                             </dl>
                         {% endif %}
 
                         {# Roles #}
-                        {% if item.roles.length > 0 %}
+                        {% if item.current.roles.length > 0 %}
                             <dl class="portfolio-field--wrapper">
                                 <dt class="portfolio-field--label">Roles</dt>
-                                {%- for role in item.roles.sort() -%}
+                                {%- for role in item.current.roles.sort() -%}
                                     <dd class="portfolio-field--content">{{role}}{% if loop.last == false %},{% endif %}</dd>
                                 {%- endfor -%}
                             </dl>
                         {% endif %}
 
                         {# Features #}
-                        {% if item.features.length > 0 %}
+                        {% if item.current.features.length > 0 %}
                             <dl class="portfolio-field--wrapper">
                                 <dt class="portfolio-field--label">Features</dt>
-                                {%- for feature in item.features -%}
+                                {%- for feature in item.current.features -%}
                                     <dd class="portfolio-field--content">{# <a href="/portfolio/feature/{{feature | urlencode}}"> #}{{feature}}{# </a> #}{% if loop.last == false %},{% endif %}</dd>
                                 {%- endfor -%}
                             </dl>
                         {% endif %}
 
                         {# Date Published #}
-                        {% if item.datePublished.length > 0 %}
+                        {% if item.current.datePublished.length > 0 %}
                             <dl class="portfolio-field--wrapper">
                                 <dt class="portfolio-field--label">Date</dt>
-                                <dd class="portfolio-field--content">{{item.datePublished | date('MM/YYYY')}}</dd>
+                                <dd class="portfolio-field--content">{{item.current.datePublished | date('MM/YYYY')}}</dd>
                             </dl>
                         {% endif %}
 
                         {# Design Credit #}
-                        {% if item.metadata.designCredit.length > 0 %}
+                        {% if item.current.metadata.designCredit.length > 0 %}
                             <dl class="portfolio-field--wrapper">
                                 <dt class="portfolio-field--label">Design Credit</dt>
-                                {% for designCredit in item.metadata.designCredit %}
+                                {% for designCredit in item.current.metadata.designCredit %}
                                     <dd class="portfolio-field--content">{{designCredit}}{% if loop.last == false %},{% endif %}</dd>
                                 {% endfor %}
                             </dl>
                         {% endif %}
 
                         {# Build Credit #}
-                        {% if item.metadata.buildCredit.length > 0 %}
+                        {% if item.current.metadata.buildCredit.length > 0 %}
                             <dl class="portfolio-field--wrapper">
                                 <dt class="portfolio-field--label">Build Credit</dt>
-                                {% for buildCredit in item.metadata.buildCredit %}
+                                {% for buildCredit in item.current.metadata.buildCredit %}
                                     <dd class="portfolio-field--content">{{buildCredit}}{% if loop.last == false %},{% endif %}</dd>
                                 {% endfor %}
                             </dl>
                         {% endif %}
 
                         {# Typography #}
-                        {% if item.metadata.typography.length > 0 %}
+                        {% if item.current.metadata.typography.length > 0 %}
                             <dl class="portfolio-field--wrapper">
                                 <dt class="portfolio-field--label">Typography</dt>
-                                {% for typography in item.metadata.typography %}
+                                {% for typography in item.current.metadata.typography %}
                                     <dd class="portfolio-field--content">{{typography}}{% if loop.last == false %},{% endif %}</dd>
                                 {% endfor %}
                             </dl>
                         {% endif %}
 
                         {# Dimensions #}
-                        {% if item.metadata.dimensions.length > 0 %}
+                        {% if item.current.metadata.dimensions.length > 0 %}
                             <dl class="portfolio-field--wrapper">
                                 <dt class="portfolio-field--label">Dimensions</dt>
-                                {% for dimensions in item.metadata.dimensions %}
+                                {% for dimensions in item.current.metadata.dimensions %}
                                     <dd class="portfolio-field--content">{{dimensions}}{% if loop.last == false %},{% endif %}</dd>
                                 {% endfor %}
                             </dl>
                         {% endif %}
 
                         {# Client #}
-                        {% if item.metadata.client.length > 0 %}
+                        {% if item.current.metadata.client.length > 0 %}
                             <dl class="portfolio-field--wrapper">
                                 <dt class="portfolio-field--label">
-                                    {%- if item.metadata.client.length > 1 -%}
+                                    {%- if item.current.metadata.client.length > 1 -%}
                                         Clients
                                     {%- else -%}
                                         Client
                                     {%- endif -%}
                                 </dt>
-                                {% for client in item.metadata.client %}
-                                    <dd class="portfolio-field--content">{{client}}{% if loop.index < item.metadata.client.length %},{% endif %}</dd>
+                                {% for client in item.current.metadata.client %}
+                                    <dd class="portfolio-field--content">{{client}}{% if loop.index < item.current.metadata.client.length %},{% endif %}</dd>
                                 {% endfor %}
                             </dl>
                         {% endif %}
 
                         {# Production Time #}
-                        {% if item.metadata.productionTime.length > 0 %}
+                        {% if item.current.metadata.productionTime.length > 0 %}
                             <dl class="portfolio-field--wrapper">
                                 <dt class="portfolio-field--label">Production Time</dt>
-                                {% for productionTime in item.metadata.productionTime %}
-                                    <dd class="portfolio-field--content">{{productionTime}}{% if loop.index < item.metadata.productionTime.length %},{% endif %}</dd>
+                                {% for productionTime in item.current.metadata.productionTime %}
+                                    <dd class="portfolio-field--content">{{productionTime}}{% if loop.index < item.current.metadata.productionTime.length %},{% endif %}</dd>
                                 {% endfor %}
                             </dl>
                         {% endif %}
@@ -168,12 +168,12 @@
             {% endif %}
 
             {# Thumbnails #}
-            {% if item.images %}
+            {% if item.current.images %}
 
                 <div class="portfolio-item--thumbnails--wrapper column is-full">
                     <div class="portfolio-item--thumbnails columns is-multiline is-mobile" id="portfolio-item--thumbnails">
 
-                        {% for image in item.images %}
+                        {% for image in item.current.images %}
                             <figure class="portfolio-item--tile portfolio-item--thumbnail column image loading {% if loop.length == 1 %}is-full{% elif loop.length == 2 %}is-half{% else %}is-half-mobile is-one-third{% endif %} {% for feature in features %} {{feature}}{% endfor %}">
                                 <a href="{{dataSrc}}/{{image.filename | urlencode}}.{{image.ext}}" target="_blank" title="{{image.description}}" rel="enlarge">
                                     <img src="{{dataSrc}}/{{image.filename}}-sm.{{image.ext}}" alt="{{image.description}}">
@@ -188,4 +188,10 @@
         </main>
     </div>
 </article>
+
+{# Previous Item #}
+<a class="portfolio-item--previous-item" href="/portfolio/{{item.previous._id}}" title="{{item.previous.title}}"><i class="fa fa-angle-double-left"></i></a>
+
+{# Next Item #}
+<a class="portfolio-item--next-item" href="/portfolio/{{item.next._id}}" title="{{item.next.title}}"><i class="fa fa-angle-double-right"></i></a>
 {% endblock %}
