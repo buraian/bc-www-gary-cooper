@@ -33,6 +33,9 @@ var njk = expressNunjucks(app, {
         },
         padLeft: function(str, pad = '000') {
             return (pad + str).slice(-pad.length);
+        },
+        parseDimensions: function(str) {
+            return str.split('--').reverse()[0];
         }
     }
 });

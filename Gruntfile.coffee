@@ -31,6 +31,8 @@ module.exports = (grunt) ->
                 src: [
                     'node_modules/isotope-layout/dist/isotope.pkgd.js'
                     '<%= public %>/javascripts/modernizr-output.js'
+                    'node_modules/photoswipe/dist/photoswipe.js'
+                    'node_modules/photoswipe/dist/photoswipe-ui-default.js'
                     '<%= assets %>/**/*.js'
                 ]
                 dest: '<%= public %>/javascripts/main.js'
@@ -49,6 +51,13 @@ module.exports = (grunt) ->
                     cwd: 'node_modules/font-awesome/fonts'
                     src: ['**/*.{woff,woff2,tff,eot,svg,otf}']
                     dest: '<%= public %>/fonts'
+                ]
+            photoSwipe:
+                files: [
+                    expand: true
+                    cwd: 'node_modules/photoswipe/dist/default-skin'
+                    src: ['**/*.{gif,png,svg}']
+                    dest: '<%= public %>/stylesheets'
                 ]
 
         cssmin:
