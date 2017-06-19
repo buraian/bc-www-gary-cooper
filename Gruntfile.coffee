@@ -118,7 +118,7 @@ module.exports = (grunt) ->
             options:
                 outFile: '<%= public %>/stylesheets/'
                 outputStyle: 'expanded'
-                sourceMap: false
+                sourceMap: if process.env.NODE_ENV == 'development' then true else false
             dist:
                 files: [
                     expand: true
@@ -132,6 +132,7 @@ module.exports = (grunt) ->
         uglify:
             options:
                 banner: '<%= banner %>'
+                sourceMap: if process.env.NODE_ENV == 'development' then true else false
             dist:
                 src: ['<%= public %>/javascripts/main.js']
                 dest: '<%= public %>/javascripts/main.min.js'
